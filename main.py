@@ -58,8 +58,7 @@ if optionCable == "Aerial line":
         try:
             dicAereas['faseAereaCable']
         except Exception as e:
-            st.write("You chose:",dicAereas['faseAereaCable']
-)
+            st.write("You chose:",dicAereas['faseAereaCable'])
 
 
 
