@@ -34,7 +34,8 @@ def lineasAereas(dicLineas):
 
     i = 0
     while True:
-        cable = datasheet.iloc[i][1]
+        cable = datasheet.iloc[i][0]
+        sizemm2 = datasheet.iloc[i][4]
         r = (datasheet.iloc[i][10]/2)*10**(-3) #m
         iMax = datasheet.iloc[i][17]*nCirc*nCondFase #A
         # potTernaMax = iMax*sqrt(3)*fdp*(dicLineas['tensionAereaLinea']*10**3)*10**(-6)
@@ -158,6 +159,7 @@ def lineasAereas(dicLineas):
         if (flagCorriente != 0 and flagTension !=0 and flagPotencia !=0 and flagCorona !=0):
             dicLineas['faseNAereaCable'] = str(nCirc) + " x " + str(nCondFase)
             dicLineas['faseAereaCable'] = cable
+            dicLineas['sizemm2'] = sizemm2
             dicLineas['faseNAereaTierra'] = "48"
             dicLineas['faseAereaTierra'] = "OPGW Tipo 1 17kA – 15,3 mm"
             break

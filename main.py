@@ -30,6 +30,8 @@ with col2:
 
 if (latitude != "") & (longitude != ""):
     elevation, pressure = get_elevationAndPressure(latitude, longitude)
+    elevation = round(elevation, 2)
+    pressure = round(pressure, 2)
     st.write("The elevation of the project is ", elevation, "m")
     st.write("The elevation of the project is ", pressure, "cmHg")
 
@@ -56,10 +58,9 @@ if optionCable == "Aerial line":
         dicAereas = lineasAereas(dicAereas)
 
         try:
-            dicAereas['faseAereaCable']
+            st.write("Your cable is: ",dicAereas['faseNAereaCable'], "cable",dicAereas['faseAereaCable'], "size",dicAereas['sizemm2'], "mm2" )
         except Exception as e:
-            st.write("You chose:",dicAereas['faseAereaCable'])
-
+            pass
 
 
 
