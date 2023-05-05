@@ -81,33 +81,31 @@ def lineasAereas(dicLineas):
             dt = sqrt(drt*dst*drtp*dstp)/dttp
             DMGff = cbrt(dr*ds*dt)*1000 #mm
 
-        match nCondFase: #En función de si es simplex o duplex
-            case 1: # Simplex
-                rEq = r*1000 #mm 
-                inductKm = (1/(2*nCondFase) + 4.6*log10(DMGff/rEq))*(10**(-4))
-                capacitanciaKm = 24.2*(10**(-9))/(log10(DMGff/rEq))
-            case 2: # Duplex
-                distFases = 400
-                rEq = sqrt(r*1000*distFases) #mm
-                inductKm = (1/(2*nCondFase) + 4.6*log10(DMGff/rEq))*(10**(-4))
-                capacitanciaKm = 24.2*(10**(-9))/(log10(DMGff/rEq))
-            case 3: # triplex
-                distFases = 500
-                rEq = cbrt(r*1000*distFases**2) #mm
-                inductKm = (1/(2*nCondFase) + 4.6*log10(DMGff/rEq))*(10**(-4))
-                capacitanciaKm = 24.2*(10**(-9))/(log10(DMGff/rEq))            
-            case default:
-                pass
-        
-        match nCirc: #En función del número de circuitos
-            case 1:
-                inductKm = inductKm/nCirc
-                capacitanciaKm = capacitanciaKm*nCirc
-            case 2:
-                inductKm = inductKm/nCirc
-                capacitanciaKm = capacitanciaKm*nCirc
-            case default:
-                pass
+        if nCondFase == 1: #En función de si es simplex o duplex ---Simplex
+            rEq = r*1000 #mm 
+            inductKm = (1/(2*nCondFase) + 4.6*log10(DMGff/rEq))*(10**(-4))
+            capacitanciaKm = 24.2*(10**(-9))/(log10(DMGff/rEq))
+        elif nCondFase == 2: # Duplex
+            distFases = 400
+            rEq = sqrt(r*1000*distFases) #mm
+            inductKm = (1/(2*nCondFase) + 4.6*log10(DMGff/rEq))*(10**(-4))
+            capacitanciaKm = 24.2*(10**(-9))/(log10(DMGff/rEq))
+        elif nCondFase == 3: # triplex
+            distFases = 500
+            rEq = cbrt(r*1000*distFases**2) #mm
+            inductKm = (1/(2*nCondFase) + 4.6*log10(DMGff/rEq))*(10**(-4))
+            capacitanciaKm = 24.2*(10**(-9))/(log10(DMGff/rEq))            
+        else: 
+            pass
+ #En función del número de circuitos
+        if nCirc == 1:
+            inductKm = inductKm/nCirc
+            capacitanciaKm = capacitanciaKm*nCirc
+        elif nCirc == 2:
+            inductKm = inductKm/nCirc
+            capacitanciaKm = capacitanciaKm*nCirc
+        else:
+            pass
         
         reactancia = inductKm*float(dicLineas['longAereaLinea'])*2*pi*50
         susceptancia = capacitanciaKm*float(dicLineas['longAereaLinea'])*2*pi*50
