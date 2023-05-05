@@ -1,5 +1,4 @@
 import streamlit as st
-from soterradas import *
 from aereas import *
 from coordinates import *
 
