@@ -15,30 +15,34 @@ optionCable = st.radio("# Choose an option", ("Aerial line", "Underground cable"
 ##### Parametres of the project
 """
 
-potPOI = st.text_input("Enter the desired power @ POI (MW)")
 
-col1, col2 = st.columns(2)
 
-global latitude, longitude, elevation, pressure
 
-with col1:
-    latitude = st.text_input("Enter the latitude")
-
-with col2:
-    longitude = st.text_input("Enter the longitude")
-
-if (latitude != "") & (longitude != ""):
-    elevation, pressure = get_elevationAndPressure(latitude, longitude)
-    elevation = round(elevation, 2)
-    pressure = round(pressure, 2)
-    st.write("The elevation of the project is ", elevation, "m")
-    st.write("The elevation of the project is ", pressure, "cmHg")
-
-"""
-##### Parametres of the line
-"""
 
 if optionCable == "Aerial line":
+
+    """
+    ##### Parametres of the line
+    """
+    potPOI = st.text_input("Enter the desired power @ POI (MW)")
+
+    col1, col2 = st.columns(2)
+
+    global latitude, longitude, elevation, pressure
+
+    with col1:
+        latitude = st.text_input("Enter the latitude")
+
+    with col2:
+        longitude = st.text_input("Enter the longitude")
+
+    if (latitude != "") & (longitude != ""):
+        elevation, pressure = get_elevationAndPressure(latitude, longitude)
+        elevation = round(elevation, 2)
+        pressure = round(pressure, 2)
+        st.write("The elevation of the project is ", elevation, "m")
+        st.write("The elevation of the project is ", pressure, "cmHg")
+
     longLinea = st.text_input("Enter the longitude of the line (km)")
     voltage = st.text_input("Enter the voltage of the line (kV)")
     maxVoltage = st.text_input("Enter the maximum voltage of the line (kV)")
@@ -54,7 +58,7 @@ if optionCable == "Aerial line":
     if (elevation!="") & (potPOI!="") & (voltage!="") & (longLinea!="") & (pressure!="") & (maxVoltage!="") & (voltageDrop!=0.0) & (powerLoss!=0.0):
         dicAereas = dict(elevacion = elevation, potPOI = potPOI,tensionAereaLinea = voltage,longAereaLinea = longLinea, presion = pressure, tensionMaxAereaLinea = maxVoltage , caidaTension =  voltageDrop,perdidaPotencia = powerLoss )
 
-        dicAereas = lineasAereas(dicAereas)
+        # dicAereas = lineasAereas(dicAereas)
 
         try:
             st.write("Your cable is: ",dicAereas['faseNAereaCable'], "cable",dicAereas['faseAereaCable'], "size",dicAereas['sizemm2'], "mm2" )
