@@ -58,7 +58,7 @@ if optionCable == "Aerial line":
     if (elevation!="") & (potPOI!="") & (voltage!="") & (longLinea!="") & (pressure!="") & (maxVoltage!="") & (voltageDrop!=0.0) & (powerLoss!=0.0):
         dicAereas = dict(elevacion = elevation, potPOI = potPOI,tensionAereaLinea = voltage,longAereaLinea = longLinea, presion = pressure, tensionMaxAereaLinea = maxVoltage , caidaTension =  voltageDrop,perdidaPotencia = powerLoss )
 
-        # dicAereas = lineasAereas(dicAereas)
+        dicAereas = lineasAereas(dicAereas)
 
         try:
             st.write("Your cable is: ",dicAereas['faseNAereaCable'], "cable",dicAereas['faseAereaCable'], "size",dicAereas['sizemm2'], "mm2" )
