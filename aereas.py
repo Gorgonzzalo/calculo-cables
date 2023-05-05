@@ -1,10 +1,5 @@
-from math import *
-
 from pandas import *
-from tabula import *
 from numpy import *
-import pickle
-
 
 def lineasAereas(dicLineas):
     df_dmg = DataFrame(columns = ['TENSIÓN', 'DMG'])

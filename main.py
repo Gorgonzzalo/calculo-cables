@@ -6,29 +6,20 @@ from coordinates import *
 """
 # Sizing cables calculation
 """
-
-
 optionCable = st.radio("# Choose an option", ("Aerial line", "Underground cable"))
-
-# Necesitamos , potPOI, tensión Línea, Longitud Línea, tensión máxima, %desired caida tensión, %desired perdida potencia
-"""
-##### Parametres of the project
-"""
-
-
-
-
 
 if optionCable == "Aerial line":
 
     """
-    ##### Parametres of the line
+    ##### Parametres of the project
     """
     potPOI = st.text_input("Enter the desired power @ POI (MW)")
 
     col1, col2 = st.columns(2)
 
-    global latitude, longitude, elevation, pressure
+    elevation = ''
+    pressure = ''
+
 
     with col1:
         latitude = st.text_input("Enter the latitude")
