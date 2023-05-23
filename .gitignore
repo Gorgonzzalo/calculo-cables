@@ -146,3 +146,9 @@ venv.bak/
 .history
 history/
 .history/
+
+# Trials 
+.trials.pye
+trials.py
+trials.py/
+trials.py
